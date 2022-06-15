@@ -35,7 +35,7 @@ impl UnitKind {
         match self {
             UnitKind::Length(x) => x.names(),
             UnitKind::Mass(x) => x.names(),
-            UnitKind::Temperature(x) => todo!(),
+            UnitKind::Temperature(x) => x.names(),
         }
     }
   
