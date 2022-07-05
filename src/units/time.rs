@@ -1,5 +1,3 @@
-use std::fmt::format;
-
 use crate::{Unit, UnitKind};
 use enum_iterator::Sequence;
 use anyhow::{Result, Ok};

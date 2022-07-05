@@ -20,3 +20,6 @@ Mass: Kilogram(kg), Gram(g), Pound(lb), Ounce(oz)
 
 Temperature: Celcius(°C), Fahrenheit(°F), Kelvin(°K)
 100°f to °C 
+
+Time: Seconds(sec), Minutes(min), Hour (hr), Day (d), Month(m), Year(yr), Decade(dec), Century (cent), Millenium (M)
+1hr to s

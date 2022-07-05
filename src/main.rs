@@ -1,16 +1,10 @@
-mod error;
-mod length;
-mod unit_kind;
-mod mass;
-mod temperature;
-mod time;
+mod error; 
+mod units;  
 
 use std::{io::{BufRead, stdout, stdin, Write}};
 use anyhow::{Result, Ok}; 
-use error::AppError;
-use length::LengthUnit;
-use enum_iterator::{all, Sequence};
-use unit_kind::{UnitKind, Unit};
+use error::AppError; 
+use units::{UnitKind, Unit};
 
 #[derive(Debug)]
 pub struct ConvertRequest {
