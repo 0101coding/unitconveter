@@ -42,46 +42,16 @@ impl Unit for MassUnit {
 
 
 impl MassUnit {
-    pub fn to_grams(&self, value:f64) -> f64 {
-        match self {
-            MassUnit::Kilogram => 1000.0,
-            MassUnit::Gram => 1.0,
-            MassUnit::Pound => 453.59237,
-            MassUnit::Ounce => 28.3495231,
-        }
-    }
-    pub fn to_kilograms(&self, value:f64) -> f64 {
+    pub fn kilograms(&self) -> f64 {
         match self {
             MassUnit::Kilogram => 1.0,
-            MassUnit::Gram => 1.0 / 1000.0,
-            MassUnit::Pound => 0.45359237,
-            MassUnit::Ounce => 0.02834952,
-        }
-    }
-    pub fn to_ounces(&self, value:f64) -> f64 {
-        match self {
-            MassUnit::Kilogram => 35.273962,
-            MassUnit::Gram => 0.03527396,
-            MassUnit::Pound => 16.0,
-            MassUnit::Ounce => 1.0,
-        }
-    }
-    pub fn to_pounds(&self, value: f64) -> f64 {
-        match self {
-            MassUnit::Kilogram => 2.20462262,
-            MassUnit::Gram => 0.00220462,
-            MassUnit::Pound => 1.0,
-            MassUnit::Ounce => 0.0625,
+            MassUnit::Gram =>  1000.0,
+            MassUnit::Pound => 2.20462262,
+            MassUnit::Ounce => 35.273962,
         }
     }
     pub fn convert(&self, value: &f64, to_unit: MassUnit) -> String {
-        let result = match to_unit {
-            MassUnit::Kilogram => self.to_kilograms(*value),
-            MassUnit::Gram => self.to_grams(*value),
-            MassUnit::Pound => self.to_pounds(*value),
-            MassUnit::Ounce => self.to_ounces(*value),
-        };
-
-       format!("{} {}", result, to_unit.short_name())
+        let result = value * to_unit.kilograms() / self.kilograms(); 
+        format!("{} {}", result, to_unit.short_name())
     }
 }

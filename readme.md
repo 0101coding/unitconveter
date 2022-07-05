@@ -12,6 +12,11 @@ Example
     To: C
 
 Supported Units
-Length: Meter, Kilometer, Mile, Foot
-Mass: Kilogram, Gram, Pound, Ounce
-Temperature: Celcius, Fahrenheit, Kelvin
+Length: Meter(m), Kilometer(km), Mile(ml), Foot (ft)
+10m to Km
+
+Mass: Kilogram(kg), Gram(g), Pound(lb), Ounce(oz) 
+10oz to lb 
+
+Temperature: Celcius(°C), Fahrenheit(°F), Kelvin(°K)
+100°f to °C 

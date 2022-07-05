@@ -4,6 +4,7 @@ use crate::mass::MassUnit;
 use enum_iterator::{all, Sequence};
 use crate::error::AppError;
 use crate::temperature::TemperatureUnit;
+use crate::time::TimeUnit;
 
 pub trait Unit {
     fn from_text(t: &str) -> Result<Box<Self>> ; 
@@ -15,7 +16,8 @@ pub trait Unit {
 pub enum  UnitKind {
     Length(LengthUnit),
     Mass(MassUnit),
-    Temperature(TemperatureUnit)
+    Temperature(TemperatureUnit),
+    Time(TimeUnit)
 }
 
 impl UnitKind {
@@ -36,6 +38,7 @@ impl UnitKind {
             UnitKind::Length(x) => x.names(),
             UnitKind::Mass(x) => x.names(),
             UnitKind::Temperature(x) => x.names(),
+            UnitKind::Time(x) => x.names()
         }
     }
   
@@ -45,6 +48,7 @@ impl UnitKind {
             UnitKind::Length(ref x) => Ok(x.convert(value, *LengthUnit::from_text(to_unit)?)),
             UnitKind::Mass(x) => Ok(x.convert(value, *MassUnit::from_text(to_unit)?)),
             UnitKind::Temperature(x) => Ok(x.convert(value, *TemperatureUnit::from_text(to_unit)?)),
+            UnitKind::Time(x) => Ok(x.convert(value, *TimeUnit::from_text(to_unit)?))
         }
     }
 }

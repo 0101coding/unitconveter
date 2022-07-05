@@ -3,6 +3,7 @@ mod length;
 mod unit_kind;
 mod mass;
 mod temperature;
+mod time;
 
 use std::{io::{BufRead, stdout, stdin, Write}};
 use anyhow::{Result, Ok}; 
@@ -104,6 +105,6 @@ fn main() -> Result<()> {
  
    let result = convert(ConvertRequest::from_text(&request.to_lowercase())?)?;
 
-   dbg!(&result);
+   println!("{} ", result);
    Ok(())
 }
