@@ -54,6 +54,15 @@ impl UnitKind {
             UnitKind::Time(x) => x.names()
         }
     }
+
+    pub fn short_name(&self) -> &str {
+        match self {
+            UnitKind::Length(x) => x.short_name(),
+            UnitKind::Mass(x) => x.short_name(),
+            UnitKind::Temperature(x) => x.short_name(),
+            UnitKind::Time(x) => x.short_name()
+        }
+    }
    
     pub fn base_conversion(&self, value: Option<f64>) -> f64 {
         match self {
@@ -76,6 +85,6 @@ impl UnitKind {
             _ => request.number * to_unit.base_conversion(None) / from_unit.base_conversion(None)
         }; 
 
-        Ok(format!("{}", result))
+        Ok(format!("{}{}", result, to_unit.short_name()))
     }
 }

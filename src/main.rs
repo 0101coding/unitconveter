@@ -95,6 +95,6 @@ fn main() -> Result<()> {
  
    let request = ConvertRequest::from_text(&request.to_lowercase())?;
    let result = UnitKind::convert(&request)?;
-   println!("{}{} -> {}{}", request.number, request.from_unit, result, request.to_unit);
+   println!("{}{} -> {}", request.number, request.from_unit, result);
    Ok(())
 }
