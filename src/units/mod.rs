@@ -2,11 +2,12 @@ pub mod length;
 pub mod mass;
 pub mod temperature;
 pub mod time;
+ 
 
 use anyhow::{Result, Ok};  
 use enum_iterator::{all, Sequence};
 use crate::error::AppError; 
-
+use crate::ConvertRequest;
 use length::LengthUnit;
 use mass::MassUnit;
 use temperature::TemperatureUnit;
@@ -26,6 +27,8 @@ pub enum  UnitKind {
     Time(TimeUnit)
 }
 
+
+
 impl UnitKind {
      pub fn from_text(t: &str) -> Result<Self> {
          for unit in all::<UnitKind>() {
@@ -39,6 +42,10 @@ impl UnitKind {
          return Err(AppError::UnknownUnit(t.into()).into())
     }
 
+    fn same_kind(&self, other: &UnitKind) -> bool {
+        std::mem::discriminant(self) == std::mem::discriminant(other)
+    } 
+
     pub fn names(&self) -> Vec<&str> {
         match self {
             UnitKind::Length(x) => x.names(),
@@ -47,14 +54,28 @@ impl UnitKind {
             UnitKind::Time(x) => x.names()
         }
     }
-  
-
-    pub fn to_dest_unit(&self, value: &f64, to_unit: &str) -> Result<String> {
+   
+    pub fn base_conversion(&self, value: Option<f64>) -> f64 {
         match self {
-            UnitKind::Length(ref x) => Ok(x.convert(value, *LengthUnit::from_text(to_unit)?)),
-            UnitKind::Mass(x) => Ok(x.convert(value, *MassUnit::from_text(to_unit)?)),
-            UnitKind::Temperature(x) => Ok(x.convert(value, *TemperatureUnit::from_text(to_unit)?)),
-            UnitKind::Time(x) => Ok(x.convert(value, *TimeUnit::from_text(to_unit)?))
+            UnitKind::Length(x) => x.kilometers(),
+            UnitKind::Mass(x) => x.kilograms(),
+            UnitKind::Temperature(x) => x.from_kelvin(&value.unwrap()),
+            UnitKind::Time(x) => x.millenium(),
         }
+    }
+
+    pub fn convert(request: &ConvertRequest) -> Result<String>{
+        let from_unit = UnitKind::from_text(&request.from_unit)?;
+        let to_unit = UnitKind::from_text(&request.to_unit)?;
+        println!("{:?}", from_unit);
+        if !from_unit.same_kind(&to_unit) {
+            return Err(AppError::WrongUnit("You cannot convert from source to destination unit".into()).into());
+        }
+        let result = match from_unit {
+            UnitKind::Temperature(x) => to_unit.base_conversion(Some(x.to_kelvin(&request.number))),
+            _ => request.number * to_unit.base_conversion(None) / from_unit.base_conversion(None)
+        }; 
+
+        Ok(format!("{}", result))
     }
 }

@@ -50,8 +50,5 @@ impl MassUnit {
             MassUnit::Ounce => 35.273962,
         }
     }
-    pub fn convert(&self, value: &f64, to_unit: MassUnit) -> String {
-        let result = value * to_unit.kilograms() / self.kilograms(); 
-        format!("{} {}", result, to_unit.short_name())
-    }
+   
 }

@@ -83,11 +83,7 @@ fn parse_from_value(value: String) -> Result<(f64, String)> {
    }
    Ok((number, txt_unit.to_owned()))
 }
-
-fn convert(request: ConvertRequest) -> Result<String>{
-    let unit = UnitKind::from_text(request.from_unit.as_str())?;
-    unit.to_dest_unit(&request.number, &request.to_unit) 
-}
+ 
 
 fn main() -> Result<()> {
    let args: Vec<String> = std::env::args().skip(1).collect();
@@ -97,8 +93,8 @@ fn main() -> Result<()> {
        false => args.join(" ")
    };
  
-   let result = convert(ConvertRequest::from_text(&request.to_lowercase())?)?;
-
-   println!("{} ", result);
+   let request = ConvertRequest::from_text(&request.to_lowercase())?;
+   let result = UnitKind::convert(&request)?;
+   println!("{}{} -> {}{}", request.number, request.from_unit, result, request.to_unit);
    Ok(())
 }

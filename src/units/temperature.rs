@@ -52,9 +52,4 @@ impl TemperatureUnit {
         }
    }
 
-   pub fn convert(&self, value: &f64, to_unit: TemperatureUnit) -> String {
-    let result = self.from_kelvin(&to_unit.to_kelvin(value));
-    format!("{} {}", result, to_unit.short_name())
- }
-
 }

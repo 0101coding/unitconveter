@@ -48,11 +48,6 @@ impl LengthUnit {
         }
     }
  
-  
-    pub fn convert(&self, value: &f64, to_unit: LengthUnit) -> String { 
-        let result = value * to_unit.kilometers() / self.kilometers(); 
 
-       format!("{}{}", result, to_unit.short_name())
-    }
  
  }

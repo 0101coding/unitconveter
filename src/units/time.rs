@@ -73,9 +73,5 @@ impl TimeUnit {
         }
     }
 
-    pub fn convert(&self, value: &f64, to_unit: TimeUnit) -> String {
-        let result = value * to_unit.millenium() / self.millenium();
 
-        format!("{:.5}{}", result, to_unit.short_name())
-    }
 }
