@@ -58,7 +58,7 @@ impl Unit for TimeUnit {
 }
 
 impl TimeUnit {
-    pub fn millenium(&self) -> f64 {
+    pub fn year(&self) -> f64 {
         match self {
             TimeUnit::Millenium => 0.001,
             TimeUnit::Century => 0.01,
@@ -69,7 +69,7 @@ impl TimeUnit {
             TimeUnit::Day => 365.0,
             TimeUnit::Hour => 8760.0,
             TimeUnit::Minute => 525600.0,
-            TimeUnit::Second => 31540000.0 // or s
+            TimeUnit::Second => 31536000.0 // or s
         }
     }
 

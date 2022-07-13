@@ -69,7 +69,7 @@ impl UnitKind {
             UnitKind::Length(x) => x.kilometers(),
             UnitKind::Mass(x) => x.kilograms(),
             UnitKind::Temperature(x) => x.from_kelvin(&value.unwrap()),
-            UnitKind::Time(x) => x.millenium(),
+            UnitKind::Time(x) => x.year(),
         }
     }
 
