@@ -18,17 +18,17 @@ Examples
     ```
 
 ### Supported Units
-- Length: *Meter*(m), *Kilometer*(km), *Mile*(ml), *Foot* (ft)
-10m to Km
+- Length: *Meter*(m), *Kilometer*(km), *Mile*(ml), *Foot* (ft)<br />
+e.g 10m to Km
 
-- Mass: *Kilogram*(kg), *Gram*(g), *Pound*(lb), *Ounce*(oz) 
-10oz to lb 
+- Mass: *Kilogram*(kg), *Gram*(g), *Pound*(lb), *Ounce*(oz) <br />
+e.g 10oz to lb 
 
-- Temperature: *Celcius*(°C), *Fahrenheit*(°F), *Kelvin*(°K)
-100°f to °C 
+- Temperature: *Celcius*(°C), *Fahrenheit*(°F), *Kelvin*(°K)<br />
+e.g 100°f to °C 
 
-- Time: *Seconds*(sec), *Minutes*(min), *Hour* (hr), *Day* (d), *Month*(m), *Year*(yr), *Decade*(dec), *Century*(cent), *Millenium* (M)
-1hr to s
+- Time: *Seconds*(sec), *Minutes*(min), *Hour* (hr), *Day* (d), *Month*(m), *Year*(yr), *Decade*(dec), *Century*(cent), *Millenium* (M)<br />
+e.g 1hr to s
 
 
 ### Known Issue
