@@ -29,3 +29,7 @@ Examples
 
 - Time: *Seconds*(sec), *Minutes*(min), *Hour* (hr), *Day* (d), *Month*(m), *Year*(yr), *Decade*(dec), *Century*(cent), *Millenium* (M)
 1hr to s
+
+
+### Known Issue
+The Time conversion to seconds is still buggy
